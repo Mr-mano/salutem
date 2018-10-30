@@ -7,7 +7,7 @@ $photo = "doctor-1.jpg";
 $skill1 = "homéopathe";
 $skill2 = "osthéopathe";
 $universite = "digitalcampus";
-
+$phone = "0610671856"
 
 
 
@@ -162,13 +162,21 @@ $universite = "digitalcampus";
                 <div class="doctor-details">
                     <h4><?= $firstname . " " . $lastname; ?></h4>
                     <p><?= $skill1; ?> / <?= $skill2; ?></p>
-                    <p>Université :<?=" ". $universite; ?></p>
-                    <a href="#" class="btn btn-dark">
-                        <i class="fa fa-eye"></i>
-                        Plus d'informations
+                    <p>Université :<?=" ". $universite; ?>
+                    <br>
+                        <?php if ($phone) : ?>
+                    <a href="tel : <?= $phone; ?>">
+                            <i class="fa fa-phone"></i>
+                        <?= $phone; ?>
                     </a>
-                </div>
-            </article>
+                        <?php endif; ?>
+                    </p>
+                        <a href="#" class="btn btn-dark">
+                            <i class="fa fa-eye"></i>
+                            Plus d'informations
+                        </a>
+                    </div>
+                </article>
             <article class="doctor-thumbnail">
                 <img src="uploads/doctor-2.jpg" alt="Norma Pedric">
                 <div class="doctor-details">
