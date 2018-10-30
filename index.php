@@ -1,3 +1,21 @@
+<?php
+define("UPLOAD_DIR", "uploads/");
+
+$firstname = "jack";
+$lastname = "smith";
+$photo = "doctor-1.jpg";
+$skill1 = "homéopathe";
+$skill2 = "osthéopathe";
+$universite = "digitalcampus";
+
+
+
+
+; ?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -140,10 +158,11 @@
                 </form>
             </article>
             <article class="doctor-thumbnail">
-                <img src="uploads/doctor-1.jpg" alt="Jack Smith">
+                <img src="<?= UPLOAD_DIR . $photo; ?>" alt="<?=$firstname . " " . $lastname; ?>">
                 <div class="doctor-details">
-                    <h4>Jack Smith</h4>
-                    <p>Homéopathe / Ostéopathe</p>
+                    <h4><?= $firstname . " " . $lastname; ?></h4>
+                    <p><?= $skill1; ?> / <?= $skill2; ?></p>
+                    <p>Université :<?=" ". $universite; ?></p>
                     <a href="#" class="btn btn-dark">
                         <i class="fa fa-eye"></i>
                         Plus d'informations
