@@ -4,12 +4,12 @@ define("UPLOAD_DIR", "uploads/");
 $docteurs = [];
 
 $docteurs[] = [
-        "firstname" => "Jack",
-        "lastname" => "smith",
-        "photo" => "doctor-1.jpg",
-        "skills" => ["homéopathe", "osthéopathe"],
-        "university" => "digitalcampus",
-        "phone" => ""
+    "firstname" => "Jack",
+    "lastname" => "smith",
+    "photo" => "doctor-1.jpg",
+    "skills" => ["homéopathe", "osthéopathe"],
+    "university" => "digitalcampus",
+    "phone" => ""
 ];
 
 $docteurs[] = [
@@ -36,13 +36,7 @@ $photo = "doctor-1.jpg";
 $skill1 = "homéopathe";
 $skill2 = "osthéopathe";
 $universite = "digitalcampus";
-$phone = "0610671856"
-
-
-
-; ?>
-
-
+$phone = "0610671856"; ?>
 
 
 <!DOCTYPE html>
@@ -113,7 +107,9 @@ $phone = "0610671856"
         <div class="container">
             <article>
                 <h3>Centre médicale</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, debitis delectus dolorem, est eveniet ex explicabo id iure iusto magni maiores nam non numquam odio officiis quaerat reiciendis repellat totam.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, debitis delectus dolorem, est
+                    eveniet ex explicabo id iure iusto magni maiores nam non numquam odio officiis quaerat reiciendis
+                    repellat totam.</p>
                 <a href="#" class="btn btn-light">Lire la suite</a>
             </article>
             <article>
@@ -151,7 +147,8 @@ $phone = "0610671856"
             </article>
             <article>
                 <h3>Numéro d'urgence</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci assumenda aut delectus dolores illo laboriosam provident reiciendis tempore vel?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci assumenda aut delectus dolores
+                    illo laboriosam provident reiciendis tempore vel?</p>
                 <p>
                     <a href="tel:0243785443" class="phone-number">0243785443</a>
                 </p>
@@ -171,7 +168,7 @@ $phone = "0610671856"
                     <input type="tel" required placeholder="Téléphone">
                     <input type="date" required placeholder="Date">
                     <input type="time" step="900" required placeholder="Heure">
-                    <select required >
+                    <select required>
                         <option disabled selected>Choisissez une spécialité</option>
                         <option>Médecin Généraliste</option>
                         <option>Dentiste</option>
@@ -186,47 +183,40 @@ $phone = "0610671856"
                     </button>
                 </form>
             </article>
-            <article class="doctor-thumbnail">
-                <img src="<?= UPLOAD_DIR . $docteurs[0] ["photo"]; ?>" alt="<?=$docteurs[0] ["firstname"] . " " . $docteurs[0] ["lastname"]; ?>">
-           <div class="doctor-details">
-                    <p><?= $docteurs[0] ["skills"][0]; ?> / <?= $docteurs[0] ["skills"][1]; ?></p>
-                    <p>Université :<?=" ". $docteurs[0] ["university"]; ?>
-                    <br>
-                        <?php if ($docteurs[0] ["phone"]) : ?>
-                    <a href="tel : <?= $docteurs[0]["phone"]; ?>">
-                            <i class="fa fa-phone"></i>
-                        <?= $docteurs[0]["phone"]; ?>
-                    </a>
+            <?php foreach ($docteurs as $docteur): ?>
+                <article class="doctor-thumbnail">
+                    <img src="<?= UPLOAD_DIR . $docteur ["photo"]; ?>"
+                         alt="<?= $docteur ["firstname"] . " " . $docteur ["lastname"]; ?>">
+                    <div class="doctor-details">
+                        <h4><?= $docteur["firstname"] . " " . $docteur["lastname"]; ?></h4>
+
+
+                        <ul class="doctor-skills">
+                            <?php foreach ($docteur["skills"] as $skill) : ?>
+                                <li><?= $skill; ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                        <?php if ($docteur["university"]): ?>
+                        Université : <?= $docteur["university"]; ?>
+                        <br>
+                        <?php  endif; ?>
+
+                        <?php if ($docteur["phone"]) : ?>
+                        <p>
+                            <a href="tel :<?= $docteur["phone"]; ?>">
+                                <i class="fa fa-phone"></i>
+                                <?= $docteur["phone"]; ?>
+                            </a>
+                        </p>
                         <?php endif; ?>
-                    </p>
+
                         <a href="#" class="btn btn-dark">
                             <i class="fa fa-eye"></i>
                             Plus d'informations
                         </a>
                     </div>
                 </article>
-            <article class="doctor-thumbnail">
-                <img src="uploads/doctor-2.jpg" alt="Norma Pedric">
-                <div class="doctor-details">
-                    <h4>Norma Pedric</h4>
-                    <p>Médecin Généraliste</p>
-                    <a href="#" class="btn btn-dark">
-                        <i class="fa fa-eye"></i>
-                        Plus d'informations
-                    </a>
-                </div>
-            </article>
-            <article class="doctor-thumbnail">
-                <img src="uploads/doctor-3.jpg" alt="Maria Martin">
-                <div class="doctor-details">
-                    <h4>Maria Martin</h4>
-                    <p>Dentiste</p>
-                    <a href="#" class="btn btn-dark">
-                        <i class="fa fa-eye"></i>
-                        Plus d'informations
-                    </a>
-                </div>
-            </article>
+            <?php endforeach; ?>
         </div>
     </section>
 
@@ -239,7 +229,9 @@ $phone = "0610671856"
                 <i class="fa fa-heartbeat"></i>
                 Salutem
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus debitis, dolorem doloremque iste molestiae nulla officiis provident quas quos, rerum sapiente sed sint voluptas? Accusantium asperiores dolor dolores in libero?</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus debitis, dolorem doloremque iste
+                molestiae nulla officiis provident quas quos, rerum sapiente sed sint voluptas? Accusantium asperiores
+                dolor dolores in libero?</p>
         </article>
         <article>
             <h3>Nous contacter</h3>
