@@ -1,6 +1,35 @@
 <?php
 define("UPLOAD_DIR", "uploads/");
 
+$docteurs = [];
+
+$docteurs[] = [
+        "firstname" => "Jack",
+        "lastname" => "smith",
+        "photo" => "doctor-1.jpg",
+        "skills" => ["homéopathe", "osthéopathe"],
+        "university" => "digitalcampus",
+        "phone" => ""
+];
+
+$docteurs[] = [
+    "firstname" => "Norma",
+    "lastname" => "Pedric",
+    "photo" => "doctor-2.jpg",
+    "skills" => ["Médecin généraliste"],
+    "university" => "",
+    "phone" => "0645872536"
+];
+
+$docteurs[] = [
+    "firstname" => "Maria",
+    "lastname" => "Martin",
+    "photo" => "doctor-3.jpg",
+    "skills" => ["dentiste"],
+    "university" => "Rennes",
+    "phone" => "0618546720"
+];
+
 $firstname = "jack";
 $lastname = "smith";
 $photo = "doctor-1.jpg";
@@ -158,16 +187,15 @@ $phone = "0610671856"
                 </form>
             </article>
             <article class="doctor-thumbnail">
-                <img src="<?= UPLOAD_DIR . $photo; ?>" alt="<?=$firstname . " " . $lastname; ?>">
-                <div class="doctor-details">
-                    <h4><?= $firstname . " " . $lastname; ?></h4>
-                    <p><?= $skill1; ?> / <?= $skill2; ?></p>
-                    <p>Université :<?=" ". $universite; ?>
+                <img src="<?= UPLOAD_DIR . $docteurs[0] ["photo"]; ?>" alt="<?=$docteurs[0] ["firstname"] . " " . $docteurs[0] ["lastname"]; ?>">
+           <div class="doctor-details">
+                    <p><?= $docteurs[0] ["skills"][0]; ?> / <?= $docteurs[0] ["skills"][1]; ?></p>
+                    <p>Université :<?=" ". $docteurs[0] ["university"]; ?>
                     <br>
-                        <?php if ($phone) : ?>
-                    <a href="tel : <?= $phone; ?>">
+                        <?php if ($docteurs[0] ["phone"]) : ?>
+                    <a href="tel : <?= $docteurs[0]["phone"]; ?>">
                             <i class="fa fa-phone"></i>
-                        <?= $phone; ?>
+                        <?= $docteurs[0]["phone"]; ?>
                     </a>
                         <?php endif; ?>
                     </p>
