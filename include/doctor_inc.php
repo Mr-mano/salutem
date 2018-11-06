@@ -25,7 +25,7 @@
             </p>
         <?php endif; ?>
 
-        <a href="<?= SITE_URL; ?>doctor.php" class="btn btn-dark">
+        <a href="<?= SITE_URL; ?>doctor.php?firstname=<?= $docteur["firstname"]; ?>&lastname=<?= $docteur["lastname"]; ?>" class="btn btn-dark">
             <i class="fa fa-eye"></i>
             Plus d'informations
         </a>

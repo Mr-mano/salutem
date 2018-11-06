@@ -3,9 +3,9 @@
 function getAllDoctors(): array
 {
 
-    $docteurs = [];
+    $doctors = [];
 
-    $docteurs[] = [
+    $doctors[] = [
         "firstname" => "Jack",
         "lastname" => "smith",
         "photo" => "doctor-1.jpg",
@@ -14,7 +14,7 @@ function getAllDoctors(): array
         "phone" => ""
     ];
 
-    $docteurs[] = [
+    $doctors[] = [
         "firstname" => "Norma",
         "lastname" => "Pedric",
         "photo" => "doctor-2.jpg",
@@ -23,7 +23,7 @@ function getAllDoctors(): array
         "phone" => "0645872536"
     ];
 
-    $docteurs[] = [
+    $doctors[] = [
         "firstname" => "Maria",
         "lastname" => "Martin",
         "photo" => "doctor-3.jpg",
@@ -32,5 +32,5 @@ function getAllDoctors(): array
         "phone" => "0618546720"
     ];
 
-    return $docteurs;
+    return $doctors;
 }

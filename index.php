@@ -71,15 +71,15 @@ require_once "layout/header.php"; ?>
     <section class="doctors">
         <div class="container">
             <article>
-                <form class="form-appointment">
+                <form class="form-appointment" method="post" action="insert-appointment.php">
                     <h3>Prendre rendez-vous</h3>
-                    <input type="text" required placeholder="Nom">
-                    <input type="text" required placeholder="Prénom">
-                    <input type="email" placeholder="Email">
-                    <input type="tel" required placeholder="Téléphone">
-                    <input type="date" required placeholder="Date">
-                    <input type="time" step="900" required placeholder="Heure">
-                    <select required>
+                    <input type="text" name="lastname" required placeholder="Nom">
+                    <input type="text" name="firstname" required placeholder="Prénom">
+                    <input type="email" name="email" placeholder="Email">
+                    <input type="tel" name="phone" required placeholder="Téléphone">
+                    <input type="date" name="date" required placeholder="Date">
+                    <input type="time" name="time" step="900" required placeholder="Heure">
+                    <select name="speciality" required>
                         <option disabled selected>Choisissez une spécialité</option>
                         <option>Médecin Généraliste</option>
                         <option>Dentiste</option>
@@ -87,7 +87,7 @@ require_once "layout/header.php"; ?>
                         <option>Homéopathe</option>
                         <option>Osthéopathe</option>
                     </select>
-                    <textarea placeholder="Votre message"></textarea>
+                    <textarea name="message" placeholder="Votre message"></textarea>
                     <button type="submit" class="btn btn-light">
                         <i class="fa fa-check"></i>
                         Envoyer
@@ -95,7 +95,7 @@ require_once "layout/header.php"; ?>
                 </form>
             </article>
 
-            <?php foreach ($docteurs as $docteur): ?>
+            <?php foreach ($doctors as $docteur): ?>
             <?php include "include/doctor_inc.php"; ?>
             <?php endforeach; ?>
         </div>
