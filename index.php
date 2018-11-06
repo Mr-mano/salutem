@@ -1,45 +1,10 @@
 <?php
 require_once "config/parameters.php";
+require_once "model/database.php";
 
-$docteurs = [];
-
-$docteurs[] = [
-    "firstname" => "Jack",
-    "lastname" => "smith",
-    "photo" => "doctor-1.jpg",
-    "skills" => ["homéopathe", "osthéopathe"],
-    "university" => "digitalcampus",
-    "phone" => ""
-];
-
-$docteurs[] = [
-    "firstname" => "Norma",
-    "lastname" => "Pedric",
-    "photo" => "doctor-2.jpg",
-    "skills" => ["Médecin généraliste"],
-    "university" => "",
-    "phone" => "0645872536"
-];
-
-$docteurs[] = [
-    "firstname" => "Maria",
-    "lastname" => "Martin",
-    "photo" => "doctor-3.jpg",
-    "skills" => ["dentiste"],
-    "university" => "Rennes",
-    "phone" => "0618546720"
-];
-
-$firstname = "jack";
-$lastname = "smith";
-$photo = "doctor-1.jpg";
-$skill1 = "homéopathe";
-$skill2 = "osthéopathe";
-$universite = "digitalcampus";
-$phone = "0610671856"; ?>
+$doctors = getAllDoctors();
 
 
-<?php
 require_once "layout/header.php"; ?>
 
     <section class="home-top">
