@@ -1,7 +1,9 @@
-<?php require_once "config/parameters.php";
+<?php
+require_once "config/parameters.php";
+require_once "model/database.php";
 
-$firstname = $_GET["firstname"];
-$lastname = $_GET["lastname"];
+$id = $_GET["id"];
+$doctor = getAllDoctors($id);
 
 require_once "layout/header.php";
 ?>
@@ -12,8 +14,8 @@ require_once "layout/header.php";
 
 <main>
     <div class="container">
-        <h1><?= $firstname; ?> <?= $lastname; ?></h1>
-        <img src="<?= UPLOAD_DIR; ?>doctor-1.jpg" alt="Jack Smith">
+        <h1><?= $doctor["fullname"]; ?></h1>
+        <img src="<?= UPLOAD_DIR . $doctor["photo"]; ?>" alt=""<?= $doctor["fullname"]; ?>>
     </div>
 </main>
 

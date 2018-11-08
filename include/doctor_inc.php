@@ -1,3 +1,8 @@
+<?php
+$specialties = getAllSpecialitiesByDoctor($docteur["id"]);
+
+; ?>
+
 
 <article class="doctor-thumbnail">
     <img src="<?= UPLOAD_DIR . $docteur ["photo"]; ?>"
@@ -7,8 +12,8 @@
 
 
         <ul class="doctor-skills">
-            <?php foreach ($docteur["skills"] as $skill) : ?>
-                <li><?= $skill; ?></li>
+            <?php foreach ($specialties as $specialty) : ?>
+                <li><?= $specialty["label"]; ?></li>
             <?php endforeach; ?>
         </ul>
         <?php if ($docteur["university"]): ?>
@@ -25,7 +30,7 @@
             </p>
         <?php endif; ?>
 
-        <a href="<?= SITE_URL; ?>doctor.php?firstname=<?= $docteur["firstname"]; ?>&lastname=<?= $docteur["lastname"]; ?>" class="btn btn-dark">
+        <a href="<?= SITE_URL; ?>doctor.php?id=<?= $docteur["id"]; ?>" class="btn btn-dark">
             <i class="fa fa-eye"></i>
             Plus d'informations
         </a>
