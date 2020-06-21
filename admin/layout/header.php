@@ -13,7 +13,7 @@ require_once __DIR__ . "/../security.php";
     <title>Administration</title>
     ​
     <!-- Bootstrap core CSS -->
-    <link href="dist/css/styles.min.css" rel="stylesheet">
+    <link href="<?= SITE_URL ?>admin/dist/css/styles.min.css" rel="stylesheet">link rel="stylesheet" href="styles.min.css">
 </head>
 ​
 <body>
@@ -32,16 +32,22 @@ require_once __DIR__ . "/../security.php";
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
+                        <a class="nav-link active" href="<?= SITE_URL; ?>admin/">
                             <i class="fa fa-home"></i>
                             <span data-feather="home"></span>
                             Dashboard <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="<?= SITE_URL; ?>admin/crud/specilty">
+                        <a class="nav-link active" href="<?= SITE_URL; ?>admin/crud/specialty">
                             <i class="fa fa-fw fa-notes-medical"></i>
                             Spécialités
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="<?= SITE_URL; ?>admin/crud/doctor">
+                            <i class="fa fa-fw fa-user-md"></i>
+                            Docteurs
                         </a>
                     </li>
                 </ul>

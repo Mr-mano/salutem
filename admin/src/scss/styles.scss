@@ -2,13 +2,24 @@
 
 // Libraries
 @import url(../../node_modules/bootstrap/dist/css/bootstrap.min.css);
-@import url(../../node_modules/select2/dist/css/select2.min.css);
-@import url(../../node_modules/datatables/media/css/jquery.dataTables.css);
+// @import url(../../node_modules/datatables/media/css/jquery.dataTables.css);
 @import url(../../node_modules/@fortawesome/fontawesome-free/css/all.css);
+@import url(../../node_modules/select2/dist/css/select2.min.css);
+@import url(../../node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css);
 
 @import "login.scss";
 @import "dashboard.scss";
 
 
+table th.actions {
+  width: 350px;
+}
 
-
+table td.actions {
+  display: flex;
+  justify-content: space-around;
+}
+.img-thumbnail{
+  width: 150px;
+  max-height: 150px;
+}

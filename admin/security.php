@@ -4,10 +4,10 @@ require_once __DIR__ . "/../model/database.php";
 session_start();
 
 // vérifie si l'internaute essaie de se connecter
-if (isset($_POST["email"]) && isset($_POST["password"])){
+if (isset($_POST["login-email"]) && isset($_POST["login-password"])){
 
-    $email = $_POST["email"];
-    $password = $_POST["password"];
+    $email = $_POST["login-email"];
+    $password = $_POST["login-password"];
 
     // recherche l'utilisateur en base de données
     $user = getUserByEmailPassword($email, $password);

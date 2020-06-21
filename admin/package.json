@@ -23,7 +23,6 @@
     "css-build": "node-sass --output-style=compressed --source-map=dist/css/styles.css.map src/scss/styles.scss dist/css/styles.min.css",
     "js-build": "copyfiles -u 1 src/js/*.js dist/",
     "css-watch": "npm-watch css-build",
-    "html-watch": "npm-watch html-build",
     "js-watch": "npm-watch js-build",
     "build": "concurrently 'npm:*-build'",
     "start": "concurrently 'npm:*-watch'"
@@ -40,6 +39,10 @@
     "jquery": "^3.3.1",
     "node-sass": "^4.9.3",
     "npm-watch": "^0.4.0",
-    "popper.js": "^1.14.4"
+    "popper.js": "^1.14.4",
+    "select2": "^4.0.6-rc.1"
+  },
+  "dependencies": {
+    "datatables.net-bs4": "^1.10.19"
   }
 }

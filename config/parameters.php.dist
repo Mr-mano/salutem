@@ -5,5 +5,5 @@ define("DB_NAME", "salutem");
 define("DB_HUSER", "root");
 define("DB_PASS", "root");
 
-define("UPLOAD_DIR", "uploads/");
 define("SITE_URL", "http://localhost:8888/dcdev/php/salutem/");
+define("UPLOAD_DIR", SITE_URL . "uploads/");

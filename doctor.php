@@ -15,7 +15,7 @@ require_once "layout/header.php";
 <main>
     <div class="container">
         <h1><?= $doctor["fullname"]; ?></h1>
-        <img src="<?= UPLOAD_DIR . $doctor["photo"]; ?>" alt=""<?= $doctor["fullname"]; ?>>
+        <img src="<?= UPLOAD_URL . $doctor["photo"]; ?>" alt=""<?= $doctor["fullname"]; ?>>
     </div>
 </main>
 

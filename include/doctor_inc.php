@@ -5,7 +5,7 @@ $specialties = getAllSpecialitiesByDoctor($docteur["id"]);
 
 
 <article class="doctor-thumbnail">
-    <img src="<?= UPLOAD_DIR . $docteur ["photo"]; ?>"
+    <img src="<?= UPLOAD_URL . $docteur ["photo"]; ?>"
          alt="<?= $docteur ["firstname"] . " " . $docteur ["lastname"]; ?>">
     <div class="doctor-details">
         <h4><?= $docteur["firstname"] . " " . $docteur["lastname"]; ?></h4>

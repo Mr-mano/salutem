@@ -11,6 +11,48 @@ try {
     echo "Erreur de connexion à la base de données";
 }
 
+$files = glob(__DIR__ . "/entities/*.php");
+foreach ($files as $file){
+    require_once $file;
+}
+
+
+/**
+ * Récupérer l'ensemble des lignes d'une table
+ * @param string $table Nom de la table en base de données
+ * @param int $id Identifiant de la ligne à récupérer
+ * @return array Ensemble des données de la table
+ */
+function getAllEntities(string $table, int $id = null) : array {
+    global $connexion;
+
+    $query = "SELECT * FROM $table";
+
+    if (isset($id)) {
+        $query .= " WHERE id = :id";
+    }
+
+    $stmt = $connexion->prepare($query);
+    if (isset($id)) {
+        $stmt->bindParam(":id", $id);
+    }
+    $stmt->execute();
+
+    return isset($id) ? $stmt->fetch() : $stmt->fetchAll();
+}
+
+function getCountEntities(string $table): int
+{
+    global $connexion;
+
+    $query = "SELECT COUNT(*) AS nb_rows FROM $table";
+
+    $stmt = $connexion->prepare($query);
+    $stmt->execute();
+    $result = $stmt->fetch();
+    return intval($result["nb_rows"]);
+}
+
 function deleteEntity(string $table, int $id): ?int
 {
     global $connexion;
@@ -31,70 +73,70 @@ function deleteEntity(string $table, int $id): ?int
     return $errcode;
 }
 
-function getAllEntities(string $table): array
-{
+
+
+
+/** Insert a record in a table
+ * @param string $table Table name
+ * @param array $record
+ * @return int
+ */
+function insertEntity(string $table, array $record) : int {
     global $connexion;
 
-    $query = "
-    SELECT * FROM $table";
+    $query = "INSERT INTO $table (";
+
+    foreach ($record as $key => $item) {
+        $query .= $key . ',';
+    }
+    $query = rtrim($query,",") . ")";
+
+    $query .= " VALUES (";
+
+    foreach($record as $key => $item) {
+        $query .= ':' . $key . ',';
+    }
+    $query = rtrim($query,",") . ")";
 
     $stmt = $connexion->prepare($query);
-    $stmt->execute();
 
-    return $stmt->fetchAll();
-}
-
-function getCountEntities(string $table): int
-{
-    global $connexion;
-
-    $query = "SELECT COUNT(*) AS nb_rows FROM $table";
-
-    $stmt = $connexion->prepare($query);
-    $stmt->execute();
-    $result = $stmt->fetch();
-    return intval($result["nb_rows"]);
-}
-
-
-function getAllDoctors( int $id = null): array{
-    global $connexion;
-
-    $query = "
-              SELECT *,
-              CONCAT (user.firstname, ' ' ,user.lastname) AS fullname
-              FROM doctor
-              INNER JOIN user ON doctor.id = user.id
-              ";
-
-    if (isset($id)){
-        $query .= " WHERE doctor.id = :id";
+    foreach($record as $key => $item) {
+        $stmt->bindValue(":" . $key , $item);
     }
 
-    $stmt = $connexion->prepare($query);
-    if (isset($id)){
-        $stmt->bindParam(":id", $id);
-    }
     $stmt->execute();
 
-    return (isset($id)) ? $stmt->fetch() : $stmt->fetchAll();
+    return $connexion->lastInsertId();
 }
 
-
-FUNCTION getAllSpecialitiesByDoctor(int $id) : array{
+function updateEntity(string $table, int $id, array $values): ?int {
     global $connexion;
-
-    $query = "
-    SELECT *
-    FROM specialty
-    INNER JOIN doctor_has_specialty AS dhs ON specialty.id = dhs.specialty_id
-    WHERE dhs.doctor_id = :id;
-    ";
-
+    $errcode = null;
+    $query = "UPDATE $table SET ";
+    foreach ($values as $key => $value) {
+        $query .= "$key = :$key, ";
+    }
+    $query = rtrim($query, ", ");
+    $query .= " WHERE id = :id";
     $stmt = $connexion->prepare($query);
-    $stmt-> bindParam(":id", $id);
-    $stmt->execute();
-
-    return $stmt->fetchAll();
-
+    foreach ($values as $key => $value) {
+        $stmt->bindValue(":$key", $value);
+    }
+    $stmt->bindParam(":id", $id);
+    try {
+        $stmt->execute();
+    } catch (PDOException $ex) {
+        $errcode = $ex->getCode();
+    }
+    return $errcode;
 }
+
+
+
+
+
+
+
+
+
+
